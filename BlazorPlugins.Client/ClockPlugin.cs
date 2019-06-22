@@ -11,7 +11,8 @@ namespace BlazorPlugins.Client
 
         public ClockPlugin(INavService navService)
         {
-           _navService = navService;
+            _navService = navService;
+            _navService.AddItem(new NavItem() { DisplayName = "Clock Plugin", Url = "clock" });
         }
 
         public class Clock
@@ -23,7 +24,6 @@ namespace BlazorPlugins.Client
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            _navService.AddItem(new NavItem() { DisplayName = "Clock Plugin", Url = "clock" });
             services.AddSingleton<Clock>();
         }
     }
