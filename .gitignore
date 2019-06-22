@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/BlazorPlugins
+/BlazorPlugins.Client/bin/Debug/netstandard2.0
+/BlazorPlugins.Client/obj
+/BlazorPlugins.Server/bin/Debug/netcoreapp3.0
+/BlazorPlugins.Server/obj
+/BlazorPlugins.Shared/bin/Debug/netstandard2.0
+/BlazorPlugins.Shared/obj
+/Plugin.Weather/bin/Debug/netstandard2.0
+/Plugin.Weather/obj
+/Plugin.Weather/Plugin.Weather.csproj.user
+/BlazorPlugins.Server/BlazorPlugins.Server.csproj.user
+/BlazorPlugins.Client/BlazorPlugins.Client.csproj.user

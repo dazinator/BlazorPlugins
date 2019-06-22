@@ -1,0 +1,74 @@
+﻿@page "/"
+@using BlazorPlugins.Shared
+@inject HttpClient Http
+@inject IPluginHost Host
+
+<h1>Plugins</h1>
+
+<p>This component demonstrates dynamically loading a plugin.</p>
+
+@if (plugins == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Load</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var plugin in plugins)
+            {
+                var p = plugin;
+                <tr>
+                    <td>@plugin.Name</td>
+                    <td>@plugin.Description</td>
+                    <td><button @onclick="@(e => AddPlugin(p))">Add Plugin</button></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot><button @onclick="@(()=>Reload())">Reload</button></tfoot>
+    </table>
+}
+
+@code {
+    PluginInfo[] plugins;
+
+    protected override async Task OnInitAsync()
+    {
+        plugins = await Http.GetJsonAsync<PluginInfo[]>("api/Plugins");
+    }
+
+    async Task AddPlugin(PluginInfo info)
+    {
+        var assyByte = await Http.GetByteArrayAsync($"api/Plugins/{info.Name}");
+        Console.WriteLine("attempting to load plugin..");
+        Console.WriteLine(assyByte.ToString());
+        Host.AddPluginsFromAssembly(assyByte);
+        // Host.AddPlugin();
+        // load the plugin assemlby from the server.
+        // then create instance of te plugin type IPlugin
+        // then register it with the host.
+
+    }
+
+    async Task Reload()
+    {
+
+        Host.Reload();
+        // Host.AddPlugin();
+        // load the plugin assemlby from the server.
+        // then create instance of te plugin type IPlugin
+        // then register it with the host.
+
+    }
+
+
+
+
+}
