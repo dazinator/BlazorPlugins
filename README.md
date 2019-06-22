@@ -3,9 +3,14 @@
 
  1. Build the "Plugin.Weather" project. This spits out a plugin assembly to `[Your-Project-Path\bin\Debug\netstandard2.0\dist\_framework\_bin\Plugin.Weather.dll`
  2. Launch the blazor app, click on the "Load" button to load the weather plugin from the server.
- 3. Click on the "Reload" button to bootstrap all the plugins.
+
+ ![Click Add](./img/clickadd.PNG)
+
+ 3. The app loads the plugin from the server, and then executes it. The plugin adds a `NavItem` to the `NavMenu`.
+
+ ![Click Add](./img/weatherplugin.PNG)
 
  Note this is very much a work in progress, still lots of things to address:
 
- 1. How to unload a plugin?
+ 1. How to unload / reload a plugin?
  2. Hot can the plugin include it's own page / components?
